@@ -6,6 +6,15 @@ Building
 
 	$ make
 
+Cross-compiling for Windows with MinGW
+--------------------------------------
+
+ - download `sqlite-amalgamation` from https://www.sqlite.org/download.html
+ - extract all files from the ZIP
+ - (install MinGW if you haven't done so already, Debian/Ubuntu package: `mingw32`)
+ - run `CC=i586-mingw32msvc-gcc CFLAGS=-I/path/to/sqlite-amalgamation make`
+ - rename `hunupper.so` to `hunupper.dll`
+
 Example usage
 -------------
 
