@@ -45,7 +45,6 @@ static void hunupper(sqlite3_context *ctx, int argc, sqlite3_value **argv)
 				break;
 		}
 	}
-	result[length] = 0;
 
 	sqlite3_result_text(ctx, (char *)result, length, sqlite3_free);
 	return;
