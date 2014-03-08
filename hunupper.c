@@ -1,3 +1,9 @@
+#ifdef __GNUC__
+#  define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
+#else
+#  define UNUSED(x) UNUSED_ ## x
+#endif
+
 #include <string.h>
 #include <sqlite3ext.h>
 SQLITE_EXTENSION_INIT1
@@ -45,7 +51,7 @@ static void hunupper(sqlite3_context *ctx, int argc, sqlite3_value **argv)
 	return;
 }
 
-int sqlite3_extension_init(sqlite3 *db, char **err, const sqlite3_api_routines *api)
+int sqlite3_extension_init(sqlite3 *db, char** UNUSED(err), const sqlite3_api_routines *api)
 {
 	SQLITE_EXTENSION_INIT2(api)
 	sqlite3_create_function(db, "HUNUPPER", 1, SQLITE_UTF8, NULL, hunupper, NULL, NULL);
