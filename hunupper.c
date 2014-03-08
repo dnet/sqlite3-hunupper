@@ -14,6 +14,11 @@ static void hunupper(sqlite3_context *ctx, int argc, sqlite3_value **argv)
 		return;
     }
 
+	if (argc != 1) {
+		sqlite3_result_error(ctx, "invalid number of arguments", -1);
+		return;
+	}
+
 	length = strlen((const char*) input);
 	result = (unsigned char *)sqlite3_malloc(length);
 	if (!result) {
