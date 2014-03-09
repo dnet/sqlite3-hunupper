@@ -10,7 +10,7 @@ SQLITE_EXTENSION_INIT1
 
 static void hunupper(sqlite3_context *ctx, int argc, sqlite3_value **argv)
 {
-    const unsigned char *input;
+	const unsigned char *input;
 	int length, pos = 0;
 	unsigned char *result;
 
@@ -19,11 +19,11 @@ static void hunupper(sqlite3_context *ctx, int argc, sqlite3_value **argv)
 		return;
 	}
 
-    input = (const unsigned char *) sqlite3_value_text(argv[0]);
-    if (!input) {
+	input = (const unsigned char *) sqlite3_value_text(argv[0]);
+	if (!input) {
 		sqlite3_result_error(ctx, "no input specified", -1);
 		return;
-    }
+	}
 
 	length = strlen((const char*) input);
 	result = (unsigned char *)sqlite3_malloc(length);
