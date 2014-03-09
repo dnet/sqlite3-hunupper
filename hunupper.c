@@ -19,6 +19,7 @@ static void hunupper(sqlite3_context *ctx, int argc, sqlite3_value **argv)
 		return;
 	}
 
+	if (sqlite3_value_type(argv[0]) == SQLITE_NULL) return;
 	input = (const unsigned char *) sqlite3_value_text(argv[0]);
 	if (!input) {
 		sqlite3_result_error(ctx, "no input specified", -1);
